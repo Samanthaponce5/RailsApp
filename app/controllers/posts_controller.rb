@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 
-
+    def index
+        @posts = Post.of_followed_accounts(current_user.following).order('created_at DESC')
+  
+    end
 
     def show
         @post = Post.find(params[:id])
@@ -36,3 +39,4 @@ def posts_params
 end
 
 end
+

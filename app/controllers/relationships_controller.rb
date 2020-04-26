@@ -1,5 +1,5 @@
-class FollowsController < ApplicationController
-      def follow_account
+class RelationshipsController < ApplicationController
+  def follow_account
     @account = Account.find_by!(username: params[:username])
     if current_user.follow @account.id
       respond_to do |format|

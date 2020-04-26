@@ -9,8 +9,11 @@ class LikesController < ApplicationController
         @account.id = current_user.id 
         @like = Like.new(like_params)
        
-          @like.save
-          
+        if  @like.save
+            respond_to do |format|
+              format.html { redirect_to root_path }
+              format.js
+            end
     end
 
     

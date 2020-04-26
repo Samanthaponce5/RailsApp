@@ -20,14 +20,22 @@ def create
     def show 
         @account = Account.find(current_user.id)
         @posts = @account.posts
-     
+        @comment = @account.comments
     end
-
     def visit
         @account =  Account.find_by(username:params[:username])
         @posts = @account.posts
     end
-   
+
+    def destroy
+        @account = Account.find(params[:id])
+        @post = @account.posts.each do |post|
+            post.destroy
+        end
+        @comment = @account.comments.each do |comment|
+            comment.destroy 
+        end
+    end
 
 private
 def account_params
