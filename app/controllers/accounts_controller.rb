@@ -22,6 +22,11 @@ def create
         @posts = @account.posts
      
     end
+
+    def visit
+        @account =  Account.find_by(username:params[:username])
+        @posts = @account.posts
+    end
    
 
 private

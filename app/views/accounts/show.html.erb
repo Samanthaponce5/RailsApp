@@ -1,0 +1,57 @@
+<span class="border-0">
+<div class= "container">
+<div class= "row">
+<div class="col-4">
+<%if @account.image.attached?%>
+<%=image_tag url_for(@account.image), width: "200px", class: "rounded-circle", class: "profile-pic"%>
+<%end%>
+
+
+</div>
+<div class="col-8 text-left">
+    
+    <h1 style="float: left; width: 50%;"><%=@account.username.capitalize%></h1>
+   
+   <%if @account == current_user%>
+   <%= link_to 'Edit Profile', edit_account_path(@account.username),class: 'btn edit-button'%>
+    <%else%>
+      <%if current_user_is_following(current_user.id, @account.id)%>
+        <%= link_to 'Following', unfollow_account_path,remote: true, class: 'btn unfollow-button',id: 'unfollow-button', method: :post%>
+      <%else%>
+      <%= link_to 'Follow', follow_account_path,remote: true,class: 'btn follow-button',id: 'follow-button',method: :post%>
+      <%end%>
+      <%end%>
+
+        <div class="profile-stats"><%=@account.posts.count%> posts</div>
+       
+        <p> <p><br>
+        
+        <p> Bio: </p>
+       
+    
+    </div>
+ </div>
+        
+
+
+
+ <p class="border-top mt-3 py-2"><br>
+    <%@posts.each do |post|%>
+     
+       <%if post.image.attached?%>
+        <%= link_to post_path(post) do %>
+         <div class="hvrbox">
+          <h1 class="hvrbox-layer_bottom"> <h1 class="makingsure"><%= image_tag post.image%></h1></h1>
+             <div class="hvrbox-layer_top">
+
+             <%end%>
+            
+            </div>
+         
+          <%end%>
+          
+       </div>
+     <%end%>
+
+
+     

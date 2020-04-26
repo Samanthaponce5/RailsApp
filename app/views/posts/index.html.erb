@@ -1,0 +1,9 @@
+HOME PAGE
+<div class="text-center" >
+<% if @posts %>
+<%@posts.each do |post|%>
+
+  <%=render 'post', post: post%>
+    <%end%>
+   </div>
+ <%end%>
