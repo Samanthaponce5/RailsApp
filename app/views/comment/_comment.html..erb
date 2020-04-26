@@ -1,0 +1,5 @@
+<%=link_to comment.account.username, visit_path(comment.account.username)%>
+<%=comment.note%><br>
+<%if comment.account_id == current_user.id%>
+<%= link_to 'x', post_comment_path(post,comment), method: :delete%>
+<%end%>

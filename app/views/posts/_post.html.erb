@@ -2,12 +2,19 @@
 <%if post.image.attached?%>
 <%= image_tag url_for(post.image),class:"w-50 p-3"%>
 
+<div class=comments id= "comments_<%=post.id%>">
+<%if post.comments%>
+<%=render post.comments, post: post%>
+    <%= form_for([post, post.comments.build], remote: true) do |f|%>
+      <%= f.text_field :note, placeholder: 'Add a comment...',id: "comment_content_#{post.id}"%>
+      <%end%>
 
-
-
+      <div class=likes id= "likes_<%=post.id%>">  
+<%=render post.likes, post: post%>
 
 
 <%if post.account_id == current_user.id%>
 <%=link_to 'delete',post_path, method: :delete%>
+<%end%>
 <%end%>
 <%end%>

@@ -24,7 +24,8 @@
     
    
         <div class="profile-stats"><%=@account.posts.count%>posts</div>
-      
+        <div class="profile-stats"> <%=@account.followers.count%> <%= link_to "followers",  class: "text-dark" %></div>
+        <div class="profile-stats"> <%=@account.following.count%><%= link_to "following",  class: "text-dark" %></div><br>
         <p> <p><br>
         <p> <%=@account.username%> </p>
         <p> Bio: </p>
@@ -43,7 +44,7 @@
                 <%= link_to post_path(post) do %>                 
                   <h1 class="hvrbox-layer_bottom"> <h1 class="makingsure"><%= image_tag url_for(post.image)%></h1></h1>             
                    <div class="hvrbox-layer_top">                 
-
+                    <div class="hvrbox-text"><span class="hoverspace"><i class="fa fa-heart"></i>&nbsp0 </span>  <span class="hoverspace"><i class="fa fa-comment"></i> <%=post.comments.count%></span></div>
                    <%end%>
                  
                 </div>
