@@ -1,0 +1,19 @@
+
+<p id='alert'><%= alert %></p>
+<h1>Login</h1>
+<%= form_tag sessions_path do |form| %>
+ 
+    <%= text_field_tag :username %>
+  
+  
+     
+    <%= password_field_tag :password %>
+  
+  
+    <button class="button is-block is-info is-large is-fullwidth">Login<i class="fas fa-sign-in-alt"></i></button>
+
+<% end %>
+
+
+<a href="/signup">Sign Up</a> 
+
